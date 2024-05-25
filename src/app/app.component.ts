@@ -23,28 +23,28 @@ enum Mode {
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  notes: Array<Note>= [];
+  notes: Array<Note> = localStorage.getItem('notes') ? JSON.parse(localStorage.getItem('notes')) : [];
   selectedNote: Note;
-  mode: string = Mode.edit
-  sort:string = 'ASC'
-  btnTextAdd = 'Cоздать'
-  btnTextEdit = 'Редактировать'
-  btnTextDelete = 'Удалить'
-  btnTextSave = 'Сохранить'
+  mode: Mode = Mode.edit;
+  sort:string = 'ASC';
+  btnTextAdd = 'Cоздать';
+  btnTextEdit = 'Редактировать';
+  btnTextDelete = 'Удалить';
+  btnTextSave = 'Сохранить';
   onChange(){
     console.log(this.sort)
   }
   addNote(){
     let note: Note = {
       id: this.notes.length+1,
-      title: 'note1',
-      text: 'descr',
-      date: ''
+      title: `Заметка ${this.notes.length+1}`,
+      text: 'Описание',
+      date: new Date(Date.now()).toLocaleString('ru')
     }
     this.notes.push(note)
     this.selectedNote = note
     this.mode = Mode.edit
-    console.log(this.notes)
+    localStorage.setItem('notes',JSON.stringify(this.notes))
   }
   selectNote(note: Note){
     this.selectedNote = note
@@ -56,5 +56,12 @@ export class AppComponent {
   }
   saveNote(){
     this.mode = Mode.view
+    this.notes.reduce((acc, note) => {
+      if (note.id === this.selectedNote.id) {
+        return [...acc, { ...note }];
+      }
+      return [...acc, note];
+    }, []);
+    localStorage.setItem('notes',JSON.stringify(this.notes))
   }
 }

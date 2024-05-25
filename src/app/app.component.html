@@ -18,26 +18,30 @@
         <span>{{note.text}}</span>
       </div>
     </aside>
-    <main>
+    <main class="main">
       @if(notes.length === 0){
         <h2>У вас пока нет заметок</h2>
       } @else if(!selectedNote){
         <h2>Выберите заметку для просмотра или редактирования</h2>
       } @else{
         <div class="note-header">
-          <custom-button [btnText]="btnTextEdit" (click)="editNote()"></custom-button>
-          <custom-button [btnText]="btnTextDelete"></custom-button>
+          <custom-button class="note-header__btn" [btnText]="btnTextEdit" (click)="editNote()"></custom-button>
+          <custom-button class="note-header__btn" [btnText]="btnTextDelete"></custom-button>
         </div>
         <div class="note-main">
           @if(mode === 'view'){
             <h2 class="note-main__title">{{selectedNote.title}}</h2>
             <p>{{selectedNote.text}}</p>
           } @else {
-            <input type="text" value="{{selectedNote.title}}">
-            <textarea name="note" id="note" value="{{selectedNote.text}}"></textarea>
+            <div>
+              <input type="text" value="{{selectedNote.title}}" [(ngModel)]="selectedNote.title">
+            </div>
+            <textarea name="note" id="note" value="{{selectedNote.text}}" [(ngModel)]="selectedNote.text"></textarea>
           }
         </div>
-        <custom-button [btnText]="btnTextSave" (click)="saveNote()"></custom-button>
+        <div class="note-footer">
+          <custom-button class="note-footer__btn" [btnText]="btnTextSave" (click)="saveNote()"></custom-button>
+        </div>
       }
     </main>
   </div>

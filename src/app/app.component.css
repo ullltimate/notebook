@@ -7,6 +7,9 @@
     flex-wrap: wrap;
     gap: 20px;
 }
+.main{
+    flex-grow: 1;
+}
 .sidebar{
     width: 250px;
 }
@@ -20,4 +23,15 @@
     padding: 0;
     border: 1px solid black;
     margin-bottom: 10px;
+}
+.note-header{
+    display: flex;
+}
+.note-header__btn,
+.note-footer{
+    width: 200px;
+    margin-right: 10px;
+}
+.note-footer{
+    margin-left: auto;
 }
