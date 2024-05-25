@@ -44,7 +44,7 @@ export class AppComponent {
     this.notes.push(note)
     this.selectedNote = note
     this.mode = Mode.edit
-    localStorage.setItem('notes',JSON.stringify(this.notes))
+    localStorage.setItem('notes', JSON.stringify(this.notes))
   }
   selectNote(note: Note){
     this.selectedNote = note
@@ -62,6 +62,11 @@ export class AppComponent {
       }
       return [...acc, note];
     }, []);
-    localStorage.setItem('notes',JSON.stringify(this.notes))
+    localStorage.setItem('notes', JSON.stringify(this.notes))
+  }
+  deleteNote(){
+    this.notes = this.notes.filter(note => note.id !== this.selectedNote.id)
+    this.selectedNote = null;
+    localStorage.setItem('notes', JSON.stringify(this.notes))
   }
 }

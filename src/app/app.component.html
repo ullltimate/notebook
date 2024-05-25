@@ -26,7 +26,7 @@
       } @else{
         <div class="note-header">
           <custom-button class="note-header__btn" [btnText]="btnTextEdit" (click)="editNote()"></custom-button>
-          <custom-button class="note-header__btn" [btnText]="btnTextDelete"></custom-button>
+          <custom-button class="note-header__btn" [btnText]="btnTextDelete" (click)="deleteNote()"></custom-button>
         </div>
         <div class="note-main">
           @if(mode === 'view'){
