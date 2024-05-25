@@ -9,7 +9,7 @@
         <input type="text" class="search" (keyup)="search()" [(ngModel)]="searchText" placeholder="Поиск..." />
       </div>
       <span>Сортировать по дате</span>
-      <select class="form-control" id="sort" name="sort" [(ngModel)]="sort" (change)="onChange()">
+      <select class="form-control" id="sort" name="sort" [(ngModel)]="sort" (change)="onChangeSortSelect()">
         <option value="ASC">новые</option>
         <option value="DESC">старые</option>
       </select>

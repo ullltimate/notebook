@@ -7,12 +7,17 @@ type Note = {
   id: number
   title: string,
   text: string,
-  date: string
+  date: number
 }
 
 enum Mode {
   view = 'view',
   edit = 'edit'
+}
+
+enum Sort {
+  asc = 'ASC',
+  desc = 'DESC'
 }
 
 @Component({
@@ -26,7 +31,7 @@ export class AppComponent {
   notes: Array<Note> = localStorage.getItem('notes') ? JSON.parse(localStorage.getItem('notes')) : [];
   selectedNote: Note;
   mode: Mode = Mode.edit;
-  sort:string = 'ASC';
+  sort: Sort = Sort.desc;
   btnTextAdd = 'Cоздать';
   btnTextEdit = 'Редактировать';
   btnTextDelete = 'Удалить';
@@ -40,17 +45,21 @@ export class AppComponent {
     }
     this.selectedNote = null
   }
-  onChange(){
-    console.log(this.sort)
+  onChangeSortSelect(){
+    if(this.sort === Sort.asc){
+      this.notes.sort((a,b) => b.date - a.date)
+    } else {
+      this.notes.sort((a,b) => a.date - b.date)
+    }
   }
   addNote(){
     let note: Note = {
       id: this.notes.length+1,
       title: `Заметка ${this.notes.length+1}`,
       text: 'Описание',
-      date: new Date(Date.now()).toLocaleString('ru')
+      date: Date.now()
     }
-    this.notes.push(note)
+    this.sort === Sort.asc ? this.notes.unshift(note) : this.notes.push(note)
     this.selectedNote = note
     this.mode = Mode.edit
     localStorage.setItem('notes', JSON.stringify(this.notes))
