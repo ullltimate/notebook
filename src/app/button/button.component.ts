@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
   selector: "custom-button",
   standalone: true,
   imports: [CommonModule],
-  template: `<button class="primary" type="button">{{ btnText }}</button> `,
+  template: `<button class="button" type="button">{{ btnText }}</button> `,
   styleUrls: ["./button.component.css"],
 })
 export class ButtonComponent {

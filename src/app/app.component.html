@@ -1,6 +1,40 @@
 <div class="wrapper">
+  <header>
+    <h1>NOTEBOOK</h1>
+  </header>
   <div class="main-wrapper">
-    <sidebar></sidebar>
-    <main [notes]="notes"></main>
+    <aside class="sidebar">
+      <custom-button [btnText]="btnTextAdd" (click)="addNote()" class="sidebar__btn"></custom-button>
+      <div>
+        <input type="text" class="search" placeholder="Поиск..." />
+      </div>
+      <span>Сортировать по дате</span>
+      <select class="form-control" id="sort" name="sort" [(ngModel)]="sort" (change)="onChange()">
+        <option value="ASC">новые</option>
+        <option value="DESC">старые</option>
+      </select>
+      <div class="note" *ngFor="let note of notes" (click)="selectNote(note)">
+        <h4>{{note.title}}</h4>
+        <span>{{note.text}}</span>
+      </div>
+    </aside>
+    <main>
+      @if(notes.length === 0){
+        <h2>У вас пока нет заметок</h2>
+      } @else if(!selectedNote){
+        <h2>Выберите заметку для просмотра или редактирования</h2>
+      } @else{
+        <div class="note-header">
+          <custom-button [btnText]="btnTextEdit"></custom-button>
+          <custom-button [btnText]="btnTextDelete"></custom-button>
+        </div>
+        <div class="note-main">
+          <h2 class="note-main__title">{{selectedNote.title}}</h2>
+          <input type="text" value="{{selectedNote.title}}">
+          <textarea name="note" id="note" value="{{selectedNote.text}}"></textarea>
+        </div>
+        <custom-button [btnText]="btnTextSave"></custom-button>
+      }
+    </main>
   </div>
 </div>
