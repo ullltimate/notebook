@@ -25,15 +25,19 @@
         <h2>Выберите заметку для просмотра или редактирования</h2>
       } @else{
         <div class="note-header">
-          <custom-button [btnText]="btnTextEdit"></custom-button>
+          <custom-button [btnText]="btnTextEdit" (click)="editNote()"></custom-button>
           <custom-button [btnText]="btnTextDelete"></custom-button>
         </div>
         <div class="note-main">
-          <h2 class="note-main__title">{{selectedNote.title}}</h2>
-          <input type="text" value="{{selectedNote.title}}">
-          <textarea name="note" id="note" value="{{selectedNote.text}}"></textarea>
+          @if(mode === 'view'){
+            <h2 class="note-main__title">{{selectedNote.title}}</h2>
+            <p>{{selectedNote.text}}</p>
+          } @else {
+            <input type="text" value="{{selectedNote.title}}">
+            <textarea name="note" id="note" value="{{selectedNote.text}}"></textarea>
+          }
         </div>
-        <custom-button [btnText]="btnTextSave"></custom-button>
+        <custom-button [btnText]="btnTextSave" (click)="saveNote()"></custom-button>
       }
     </main>
   </div>
