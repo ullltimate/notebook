@@ -31,6 +31,15 @@ export class AppComponent {
   btnTextEdit = 'Редактировать';
   btnTextDelete = 'Удалить';
   btnTextSave = 'Сохранить';
+  searchText = '';
+  search(){
+    if(!this.searchText){
+      this.notes = JSON.parse(localStorage.getItem('notes'))
+    } else {
+      this.notes = JSON.parse(localStorage.getItem('notes')).filter(note => note.title.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase().trim()))
+    }
+    this.selectedNote = null
+  }
   onChange(){
     console.log(this.sort)
   }
@@ -56,17 +65,13 @@ export class AppComponent {
   }
   saveNote(){
     this.mode = Mode.view
-    this.notes.reduce((acc, note) => {
-      if (note.id === this.selectedNote.id) {
-        return [...acc, { ...note }];
-      }
-      return [...acc, note];
-    }, []);
-    localStorage.setItem('notes', JSON.stringify(this.notes))
+    let newNotes = JSON.parse(localStorage.getItem('notes')).map(note => note.id === this.selectedNote.id ? this.selectedNote : note)
+    localStorage.setItem('notes', JSON.stringify(newNotes))
   }
   deleteNote(){
-    this.notes = this.notes.filter(note => note.id !== this.selectedNote.id)
+    this.notes = JSON.parse(localStorage.getItem('notes')).filter(note => note.id !== this.selectedNote.id)
     this.selectedNote = null;
     localStorage.setItem('notes', JSON.stringify(this.notes))
+    this.searchText = ''
   }
 }

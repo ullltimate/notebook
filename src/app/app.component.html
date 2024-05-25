@@ -6,7 +6,7 @@
     <aside class="sidebar">
       <custom-button [btnText]="btnTextAdd" (click)="addNote()" class="sidebar__btn"></custom-button>
       <div>
-        <input type="text" class="search" placeholder="Поиск..." />
+        <input type="text" class="search" (keyup)="search()" [(ngModel)]="searchText" placeholder="Поиск..." />
       </div>
       <span>Сортировать по дате</span>
       <select class="form-control" id="sort" name="sort" [(ngModel)]="sort" (change)="onChange()">
@@ -20,7 +20,11 @@
     </aside>
     <main class="main">
       @if(notes.length === 0){
-        <h2>У вас пока нет заметок</h2>
+        @if(searchText){
+          <h2>У вас нет заметок c таким названием</h2>
+        } @else {
+          <h2>У вас пока нет заметок</h2>
+        }
       } @else if(!selectedNote){
         <h2>Выберите заметку для просмотра или редактирования</h2>
       } @else{
@@ -39,9 +43,11 @@
             <textarea name="note" id="note" value="{{selectedNote.text}}" [(ngModel)]="selectedNote.text"></textarea>
           }
         </div>
-        <div class="note-footer">
-          <custom-button class="note-footer__btn" [btnText]="btnTextSave" (click)="saveNote()"></custom-button>
-        </div>
+        @if(mode !== 'view'){
+          <div class="note-footer">
+            <custom-button class="note-footer__btn" [btnText]="btnTextSave" (click)="saveNote()"></custom-button>
+          </div>
+        }
       }
     </main>
   </div>
