@@ -121,6 +121,12 @@
 }
 
 @media screen and (max-width: 450px) {
+    .header-logo{
+        max-width: 200px;
+    }
+    .sidebar{
+        top: 55px;
+    }
     .note-header{
         justify-content: space-between;
         gap: 5px;
