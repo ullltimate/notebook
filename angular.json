@@ -14,6 +14,12 @@
               "main": "src/main.ts",
               "polyfills": ["zone.js"],
               "tsConfig": "tsconfig.json",
+              "assets": [
+                "src/assets"
+              ],
+              "styles": [
+                "src/style.css"
+              ],
               "aot": true
             }
           },

@@ -1,0 +1,138 @@
+.wrapper{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-logo{
+    max-width: 300px;
+}
+.menu{
+    display: none;
+}
+.main-wrapper{
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+.main{
+    flex-grow: 1;
+}
+.main__title{
+    text-align: center;
+}
+.sidebar{
+    width: 250px;
+}
+.sidebar__btn{
+    display: block;
+}
+.note-header{
+    display: flex;
+}
+.note-header__btn,
+.note-footer{
+    width: 200px;
+    margin-right: 10px;
+}
+.note-footer{
+    margin: 0 0 0 auto;
+}
+.sidebar-search__input{
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--color-border);
+}
+.sidebar-search__input:focus,
+.sisedar-select:focus{
+    outline: 1px solid var(--color-border);
+}
+.note-main__title,
+.note-main__text{
+    max-width: 1000px;
+    word-wrap: break-word;
+}
+.list-notes{
+    max-height: 60vh;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+.item-note{
+    max-height: 90px;
+    overflow: hidden;
+    margin-top: 10px;
+    background: var(--color-yellow);
+    border-radius: 5px;
+    padding: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+}
+.item-note:hover,
+.active{
+    background: var(--color-border);
+}
+.sisedar-select{
+    border: none;
+    margin-left: 10px;
+    background: transparent;
+}
+.item-note__img{
+    width: 24px;
+    position: absolute;
+    right: 5px;
+    top: 17px;
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+.item-note:hover .item-note__img{
+    opacity: 1;
+}
+
+@media screen and (max-width: 750px) {
+    .menu{
+        display: block;
+    }
+    .sidebar{
+        position: fixed;
+        background: #ffffff;
+        width: 100%;
+        height: 90vh;
+        top: 85px;
+        left: -100%;
+        padding: 20px;
+        transition: left .2s;
+        z-index: 2;
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+    }
+    .sidebar__open{
+        left: 0;
+    }
+    .item-note__img{
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .header-logo{
+        max-width: 200px;
+    }
+    .sidebar{
+        top: 55px;
+    }
+    .note-header{
+        justify-content: space-between;
+        gap: 5px;
+    }
+    .note-header__btn{
+        max-width: 160px;
+        margin-right: 0;
+    }
+}
