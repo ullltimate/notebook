@@ -8,6 +8,7 @@ import { FormsModule } from "@angular/forms";
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: "./edit-mode.component.html",
+  styleUrls: ["./edit-mode.component.css"],
 })
 export class EditModeComponent {
     @Input() selectedNote: Note;

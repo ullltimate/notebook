@@ -42,23 +42,16 @@
 .note-footer{
     margin: 0 0 0 auto;
 }
-.sidebar-search__input,
-.note-main__title-input,
-.note-main__text-input{
+.sidebar-search__input{
     width: 100%;
     height: 30px;
     margin-bottom: 10px;
     border-radius: 5px;
-    border: 1px solid #ffc850;
+    border: 1px solid var(--color-border);
 }
 .sidebar-search__input:focus,
-.note-main__title-input:focus,
-.note-main__text-input:focus,
 .sisedar-select:focus{
-    outline: 1px solid #ffc850;
-}
-.note-main__text-input{
-    height: 60vh;
+    outline: 1px solid var(--color-border);
 }
 .note-main__title,
 .note-main__text{
@@ -74,7 +67,7 @@
     max-height: 90px;
     overflow: hidden;
     margin-top: 10px;
-    background: #ffdc64;
+    background: var(--color-yellow);
     border-radius: 5px;
     padding: 10px;
     white-space: nowrap;
@@ -83,7 +76,7 @@
 }
 .item-note:hover,
 .active{
-    background: #ffc850;
+    background: var(--color-border);
 }
 .sisedar-select{
     border: none;

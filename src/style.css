@@ -13,6 +13,9 @@ html {
 }
 :root{
   font-family: "Roboto", sans-serif;
+
+  --color-yellow: #ffdc64;
+  --color-border: #ffc850;
 }
 
 body, h1, h2, h3, h4, p,
