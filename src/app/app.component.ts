@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 
 type Note = {
-  id: number
+  id: string,
   title: string,
   text: string,
   date: number
@@ -54,8 +54,8 @@ export class AppComponent {
   }
   addNote(){
     let note: Note = {
-      id: this.notes.length+1,
-      title: `Заметка ${this.notes.length+1}`,
+      id: (+new Date).toString(16),
+      title: `Новая заметка`,
       text: 'Описание',
       date: Date.now()
     }
@@ -67,7 +67,6 @@ export class AppComponent {
   selectNote(note: Note){
     this.selectedNote = note
     this.mode = Mode.view
-    console.log(this.selectedNote)
   }
   editNote(){
     this.mode = Mode.edit

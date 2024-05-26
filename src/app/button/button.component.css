@@ -1,3 +1,11 @@
 .button{
     width: 100%;
+    height: 30px;
+    background: #ffdc64;
+    border: 1px solid #ffc850;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.button:hover{
+    background: #ffc850;
 }
