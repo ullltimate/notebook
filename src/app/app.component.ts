@@ -37,6 +37,10 @@ export class AppComponent {
   btnTextDelete = 'Удалить';
   btnTextSave = 'Сохранить';
   searchText = '';
+  menu: boolean = false;
+  openCloseMenu(menu: boolean){
+    this.menu = !menu
+  }
   search(){
     if(!this.searchText){
       this.notes = JSON.parse(localStorage.getItem('notes'))
@@ -63,10 +67,12 @@ export class AppComponent {
     this.selectedNote = note
     this.mode = Mode.edit
     localStorage.setItem('notes', JSON.stringify(this.notes))
+    this.openCloseMenu(true)
   }
   selectNote(note: Note){
     this.selectedNote = note
     this.mode = Mode.view
+    this.openCloseMenu(true)
   }
   editNote(){
     this.mode = Mode.edit
