@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
 import { ButtonComponent } from 'src/app/button/button.component'
+import { EditModeComponent } from 'src/app/edit-mode/edit-mode.component'
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 
-type Note = {
+export type Note = {
   id: string,
   title: string,
   text: string,
@@ -23,7 +24,7 @@ enum Sort {
 @Component({
   selector: "root",
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent],
+  imports: [CommonModule, FormsModule, ButtonComponent, EditModeComponent],
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
 })

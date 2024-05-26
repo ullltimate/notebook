@@ -1,0 +1,15 @@
+<div>
+    <input
+      type="text"
+      class="note-main__title-input"
+      value="{{ selectedNote.title }}"
+      [(ngModel)]="selectedNote.title"
+    />
+  </div>
+  <textarea
+    name="note"
+    class="note-main__text-input"
+    id="note"
+    value="{{ selectedNote.text }}"
+    [(ngModel)]="selectedNote.text"
+  ></textarea>

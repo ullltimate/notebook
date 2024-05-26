@@ -49,12 +49,14 @@
       </div>
     </aside>
     <main class="main">
-      @if(notes.length === 0){ @if(searchText){
-      <h2 class="main__title">У вас нет заметок c таким названием</h2>
-      } @else {
-      <h2 class="main__title">У вас пока ничего нет, создайте в меню свою первую заметку!</h2>
-      } } @else if(!selectedNote){
-      <h2 class="main__title">Выберите в меню заметку для просмотра или редактирования!</h2>
+      @if(notes.length === 0){ 
+        @if(searchText){
+          <h2 class="main__title">У вас нет заметок c таким названием</h2>
+        } @else {
+          <h2 class="main__title">У вас пока ничего нет, создайте в меню свою первую заметку!</h2>
+        } 
+      } @else if(!selectedNote){
+          <h2 class="main__title">Выберите в меню заметку для просмотра или редактирования!</h2>
       } @else{
       <div class="note-header">
         <custom-button
@@ -73,21 +75,7 @@
         <h2 class="note-main__title">{{ selectedNote.title }}</h2>
         <p class="note-main__text">{{ selectedNote.text }}</p>
         } @else {
-        <div>
-          <input
-            type="text"
-            class="note-main__title-input"
-            value="{{ selectedNote.title }}"
-            [(ngModel)]="selectedNote.title"
-          />
-        </div>
-        <textarea
-          name="note"
-          class="note-main__text-input"
-          id="note"
-          value="{{ selectedNote.text }}"
-          [(ngModel)]="selectedNote.text"
-        ></textarea>
+          <edit-mode [selectedNote]="selectedNote"></edit-mode>
         }
       </div>
       @if(mode !== 'view'){
