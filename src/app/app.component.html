@@ -44,6 +44,7 @@
         >
           <h4>{{ note.title }}</h4>
           {{ note.text }}
+          <img class="item-note__img" (click)="deleteNote(note.id)" src="{{ 'assets/icon-delete.png' }}" alt="">
         </div>
       </div>
     </aside>
@@ -64,7 +65,7 @@
         <custom-button
           class="note-header__btn"
           [btnText]="btnTextDelete"
-          (click)="deleteNote()"
+          (click)="deleteNote(selectedNote.id)"
         ></custom-button>
       </div>
       <div class="note-main">

@@ -79,6 +79,7 @@
     padding: 10px;
     white-space: nowrap;
     text-overflow: ellipsis;
+    position: relative;
 }
 .item-note:hover,
 .active{
@@ -89,6 +90,18 @@
     margin-left: 10px;
     background: transparent;
 }
+.item-note__img{
+    width: 24px;
+    position: absolute;
+    right: 5px;
+    top: 17px;
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+.item-note:hover .item-note__img{
+    opacity: 1;
+}
+
 @media screen and (max-width: 750px) {
     .menu{
         display: block;
@@ -109,7 +122,11 @@
     .sidebar__open{
         left: 0;
     }
+    .item-note__img{
+        opacity: 1;
+    }
 }
+
 @media screen and (max-width: 450px) {
     .note-header{
         justify-content: space-between;
