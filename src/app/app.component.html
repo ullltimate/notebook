@@ -23,9 +23,9 @@
           placeholder="Поиск..."
         />
       </div>
-      <span>Сортировать по дате</span>
+      <span>Сортировать по дате:</span>
       <select
-        class="form-control"
+        class="sisedar-select"
         id="sort"
         name="sort"
         [(ngModel)]="sort"
@@ -51,9 +51,9 @@
       @if(notes.length === 0){ @if(searchText){
       <h2 class="main__title">У вас нет заметок c таким названием</h2>
       } @else {
-      <h2 class="main__title">У вас пока нет заметок</h2>
+      <h2 class="main__title">У вас пока ничего нет, создайте в меню свою первую заметку!</h2>
       } } @else if(!selectedNote){
-      <h2 class="main__title">Выберите заметку для просмотра или редактирования</h2>
+      <h2 class="main__title">Выберите в меню заметку для просмотра или редактирования!</h2>
       } @else{
       <div class="note-header">
         <custom-button

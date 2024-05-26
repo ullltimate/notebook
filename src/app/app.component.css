@@ -53,7 +53,8 @@
 }
 .sidebar-search__input:focus,
 .note-main__title-input:focus,
-.note-main__text-input:focus{
+.note-main__text-input:focus,
+.sisedar-select:focus{
     outline: 1px solid #ffc850;
 }
 .note-main__text-input{
@@ -83,6 +84,11 @@
 .active{
     background: #ffc850;
 }
+.sisedar-select{
+    border: none;
+    margin-left: 10px;
+    background: transparent;
+}
 @media screen and (max-width: 750px) {
     .menu{
         display: block;
@@ -91,6 +97,7 @@
         position: fixed;
         background: #ffffff;
         width: 100%;
+        height: 90vh;
         top: 85px;
         left: -100%;
         padding: 20px;
@@ -101,5 +108,15 @@
     }
     .sidebar__open{
         left: 0;
+    }
+}
+@media screen and (max-width: 450px) {
+    .note-header{
+        justify-content: space-between;
+        gap: 5px;
+    }
+    .note-header__btn{
+        max-width: 180px;
+        margin-right: 0;
     }
 }

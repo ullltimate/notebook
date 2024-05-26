@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -8,6 +10,9 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+}
+:root{
+  font-family: "Roboto", sans-serif;
 }
 
 body, h1, h2, h3, h4, p,
@@ -27,6 +32,7 @@ body {
 
 h1, h2, h3, h4,
 button, input, label {
+  font-family: inherit;
   line-height: 1.1;
 }
 
