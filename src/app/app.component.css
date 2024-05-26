@@ -26,7 +26,7 @@
     text-align: center;
 }
 .sidebar{
-    width: 250px;
+    width: 300px;
 }
 .sidebar__btn{
     display: block;
@@ -34,13 +34,9 @@
 .note-header{
     display: flex;
 }
-.note-header__btn,
-.note-footer{
+.note-header__btn{
     width: 200px;
     margin-right: 10px;
-}
-.note-footer{
-    margin: 0 0 0 auto;
 }
 .sidebar-search__input{
     width: 100%;
